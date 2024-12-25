@@ -1,0 +1,1398 @@
+/* cache-control: max-age=31536000, immutable */
+
+:root {
+    --primary-color: #ff9eaa;
+    --secondary-color: #ffd6e0;
+    --accent-color: #ff7b9c;
+    --text-color: #4a4a4a;
+    --background-color: #fff5f6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    padding-top: 60px;
+    background-color: var(--background-color);
+}
+
+header {
+    background-color: var(--primary-color);
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    height: 60px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+}
+
+nav ul li a:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.hero {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: 
+        /* 添加彩色气球 */
+        radial-gradient(circle at 75% 30%, #ff9eaa 1%, transparent 3%),
+        radial-gradient(circle at 25% 25%, #ffd6e0 2%, transparent 4%),
+        radial-gradient(circle at 85% 65%, #ffb6c1 1.5%, transparent 3%),
+        radial-gradient(circle at 15% 70%, #ffc0cb 2%, transparent 4%),
+        /* 添加星星 */
+        url('data:image/svg+xml,\
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">\
+            <path d="M50 5 L53 45 L93 50 L53 55 L50 95 L47 55 L7 50 L47 45 Z" fill="%23ffd6e0"/>\
+        </svg>'),
+        /* 添加彩虹渐变背景 */
+        linear-gradient(
+            135deg,
+            #fff5f6 0%,
+            #ffe5e8 20%,
+            #ffd6e0 40%,
+            #ffecf0 60%,
+            #fff0f3 80%,
+            #fff5f6 100%
+        );
+    background-size: 
+        300px 300px,
+        250px 250px,
+        200px 200px,
+        350px 350px,
+        50px 50px,
+        100% 100%;
+    animation: float-bg 20s infinite linear;
+}
+
+/* 添加装饰元素 */
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* 修改云朵装饰 */
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* 更可爱的云朵 */
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.9) 20%, transparent 22%),
+        radial-gradient(circle at 25% 25%, rgba(255,255,255,0.9) 15%, transparent 17%),
+        radial-gradient(circle at 15% 15%, rgba(255,255,255,0.9) 18%, transparent 20%),
+        
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.9) 25%, transparent 27%),
+        radial-gradient(circle at 85% 35%, rgba(255,255,255,0.9) 15%, transparent 17%),
+        radial-gradient(circle at 75% 25%, rgba(255,255,255,0.9) 20%, transparent 22%),
+        
+        radial-gradient(circle at 40% 70%, rgba(255,255,255,0.9) 20%, transparent 22%),
+        radial-gradient(circle at 45% 75%, rgba(255,255,255,0.9) 15%, transparent 17%),
+        
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.9) 20%, transparent 22%),
+        radial-gradient(circle at 75% 85%, rgba(255,255,255,0.9) 15%, transparent 17%);
+    background-size: 50% 50%;
+    opacity: 0.7;
+    animation: float-clouds 30s infinite linear;
+}
+
+/* 修改彩虹装饰 */
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(
+            circle at 50% 50%,
+            transparent 50%,
+            rgba(255, 182, 193, 0.1) 51%,
+            rgba(255, 218, 185, 0.1) 52%,
+            rgba(255, 255, 224, 0.1) 53%,
+            rgba(176, 224, 230, 0.1) 54%,
+            rgba(221, 160, 221, 0.1) 55%,
+            transparent 56%
+        );
+    top: -50%;
+    left: -50%;
+    animation: rotate-rainbow 60s infinite linear;
+}
+
+/* 添加新动画 */
+@keyframes float-bg {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 300px 300px, -250px 250px, 200px -200px, -350px 350px, 50px 50px, 0 0; }
+}
+
+@keyframes float-clouds {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(50%); }
+}
+
+@keyframes rotate-rainbow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 修改欢迎文本样式 */
+.welcome-text {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 32px rgba(255, 182, 193, 0.3),
+        0 4px 16px rgba(255, 182, 193, 0.2),
+        inset 0 0 80px rgba(255, 218, 185, 0.2);
+    backdrop-filter: blur(8px);
+    animation: float 6s infinite ease-in-out;
+    border: 2px solid rgba(255, 182, 193, 0.3);
+}
+
+.welcome-text h1 {
+    background: linear-gradient(45deg, #ff7b9c, #ff9eaa, #ffd6e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(255, 123, 156, 0.2);
+}
+
+/* 添加动画 */
+@keyframes twinkle {
+    0%, 100% { background-position: 0 0, 0 0, 0 0; }
+    50% { background-position: 0 0, 25px 25px, 0 0; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 添加响应式调整 */
+@media (max-width: 768px) {
+    .welcome-text {
+        margin: 0 1rem;
+        padding: 1.5rem;
+    }
+
+    .welcome-text h1 {
+        font-size: 2em;
+    }
+}
+
+section {
+    padding: 4rem 2rem;
+}
+
+/* 时光轴样式 */
+.timeline {
+    position: relative;
+    padding: 4rem 2rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    min-height: 600px;
+}
+
+/* 添加横轴 */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(139, 69, 19, 0.5) 20%,
+        rgba(139, 69, 19, 0.8) 50%,
+        rgba(139, 69, 19, 0.5) 80%,
+        transparent 100%
+    );
+}
+
+/* 隐藏滚动条但保持功能 */
+.timeline::-webkit-scrollbar {
+    display: none;
+}
+
+/* 照片夹子效果 */
+.timeline-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    height: 400px;
+    margin: 0 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 
+        0 4px 6px rgba(0,0,0,0.1),
+        0 1px 3px rgba(0,0,0,0.08);
+    white-space: normal;
+    overflow-y: auto;
+    position: relative;
+    transform: rotate(-2deg);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* 照片夹子 */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 60px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: 
+        linear-gradient(90deg, 
+            transparent 0%,
+            transparent 40%,
+            #c0c0c0 40%,
+            #c0c0c0 60%,
+            transparent 60%,
+            transparent 100%
+        ),
+        radial-gradient(
+            circle at center,
+            #f0f0f0 0%,
+            #f0f0f0 30%,
+            #c0c0c0 30%,
+            #c0c0c0 100%
+        );
+    background-size: 100% 50%, 100% 50%;
+    background-position: center top, center bottom;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.2));
+}
+
+/* 添加绳子效果 */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 40px;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.2) 50%,
+        rgba(0,0,0,0.3) 100%
+    );
+}
+
+/* 交错的卡片角度 */
+.timeline-item:nth-child(even) {
+    transform: rotate(2deg);
+    margin-top: 40px;
+}
+
+/* 悬停效果 */
+.timeline-item:hover {
+    transform: rotate(0) translateY(-15px);
+    box-shadow: 
+        0 8px 15px rgba(0,0,0,0.1),
+        0 3px 6px rgba(0,0,0,0.08);
+}
+
+/* 照片内容样式 */
+.timeline-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+.timeline-content img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.timeline-content h3 {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+}
+
+.timeline-content p {
+    font-size: 0.9em;
+    color: var(--text-color);
+    margin: 0;
+}
+
+/* 添加滚动提示 */
+.timeline::after {
+    content: '→';
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    font-size: 2em;
+    color: var(--primary-color);
+    animation: bounce 1s infinite;
+    pointer-events: none;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(10px); }
+}
+
+/* 适配移动设备 */
+@media (max-width: 768px) {
+    .timeline {
+        padding: 4rem 1rem;
+    }
+
+    .timeline-item {
+        width: 250px;
+        height: 350px;
+        margin: 0 1rem;
+    }
+
+    .timeline-content img {
+        height: 150px;
+    }
+}
+
+/* 修改编辑表单样式以适应新布局 */
+.timeline-edit-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+/* 添加编辑表单背景遮罩 */
+.timeline-edit-form::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+}
+
+.timeline-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content h4 {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.timeline-content p {
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+/* 照片墙样式 */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+/* 兴趣爱好区域样式 */
+.family-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.member-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+}
+
+/* 留言板样式 */
+.message-board {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#message-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+input, textarea {
+    padding: 1rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff8396;
+}
+
+/* 音乐播放器样式 */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#musicToggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+.welcome-text .subtitle {
+    margin-top: 1rem;
+    color: var(--accent-color);
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+.member-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
+}
+
+.hobby-items {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.hobby-items span {
+    background-color: var(--secondary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+/* 添加温馨的装饰元素 */
+.member-card::before {
+    content: '❤️';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5em;
+}
+
+/* 日记部分的样式 */
+.diary-entries {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.diary-entry {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.diary-entry::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: var(--secondary-color);
+}
+
+/* 照片墙样式补充 */
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover {
+    transform: translateY(-5px);
+}
+
+.photo-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.8rem;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.photo-item:hover .photo-caption {
+    transform: translateY(0);
+}
+
+/* 添加日记片样式 */
+.diary-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.diary-images img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.diary-images img:hover {
+    transform: scale(1.05);
+}
+
+.diary-header {
+    margin-bottom: 1rem;
+}
+
+.diary-date {
+    color: var(--accent-color);
+    font-size: 0.9em;
+}
+
+.diary-header h3 {
+    color: var(--primary-color);
+    margin-top: 0.5rem;
+}
+
+.diary-content {
+    line-height: 1.8;
+}
+
+.diary-footer {
+    margin-top: 1.5rem;
+    text-align: right;
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+/* 添加时光轴内容样式 */
+.timeline-content img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.timeline-content h4 {
+    color: var(--primary-color);
+    margin: 0.5rem 0;
+}
+
+/* 上传按钮样式 */
+.upload-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.upload-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.upload-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.upload-button i {
+    font-size: 1.2em;
+}
+
+/* 修改上传预览样式 */
+.upload-preview {
+    background: white;
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.preview-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.preview-item {
+    position: relative;
+    background: #f8f8f8;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.preview-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.remove-preview {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--accent-color);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.photo-description {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.confirm-upload {
+    display: block;
+    width: 200px;
+    margin: 1rem auto 0;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.confirm-upload:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* 添加辅助样式 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.hidden-input {
+    display: none;
+}
+
+/* 添加照片操作按钮样式 */
+.photo-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.photo-item:hover .photo-actions {
+    opacity: 1;
+}
+
+.delete-photo {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--accent-color);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.delete-photo:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* 添加淡出动画 */
+.photo-item {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.photo-item.fade-out {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+/* 修改照片项样式，确保删除按钮正确定位 */
+.photo-item {
+    position: relative;
+    overflow: visible;
+}
+
+/* 添加空状态样式 */
+.empty-state {
+    width: 100%;
+    padding: 3rem 1rem;
+    text-align: center;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.empty-state-content {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* 添加日记表单样式 */
+.add-diary {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.add-diary-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-diary-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.diary-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-top: 1rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.diary-form input,
+.diary-form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.diary-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.diary-image-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.diary-image-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.diary-preview-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.diary-preview-images img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.diary-form-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.cancel-diary {
+    background-color: #ccc;
+}
+
+.cancel-diary:hover {
+    background-color: #999;
+}
+
+.empty-diary {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.empty-diary i {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.empty-diary h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.empty-diary p {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* 添加里程碑表单样式 */
+.add-milestone {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.add-milestone-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-milestone-btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.milestone-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-top: 1rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 1rem auto;
+}
+
+.milestone-form input,
+.milestone-form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.milestone-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.milestone-image-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.milestone-image-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.milestone-preview-image {
+    margin: 1rem 0;
+}
+
+.milestone-preview-image img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.milestone-form-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.cancel-milestone {
+    background-color: #ccc;
+}
+
+.cancel-milestone:hover {
+    background-color: #999;
+}
+
+/* 空状态样式 */
+.empty-timeline {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.empty-timeline i {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.empty-timeline h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.empty-timeline p {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* 贪吃蛇游戏样式 */
+.snake-game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.score {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+#snakeCanvas {
+    background: #f8f8f8;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+.game-controls {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#startGame {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+#startGame:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.mobile-controls {
+    display: none;
+}
+
+/* 在移动设备上显示控制按钮 */
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .horizontal-controls {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .mobile-controls button {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: none;
+        background-color: var(--secondary-color);
+        color: var(--text-color);
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-controls button:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+}
+
+/* 添加留言板状态样式 */
+.empty-messages {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+}
+
+.empty-messages i {
+    font-size: 4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+.empty-messages h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.empty-messages p {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* 编辑表单样式 */
+.edit-form, .timeline-edit-form {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.edit-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+}
+
+.edit-caption, .edit-date, .edit-title, .edit-description {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+}
+
+.photo-actions, .timeline-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.photo-item:hover .photo-actions,
+.timeline-item:hover .timeline-actions {
+    opacity: 1;
+}
+
+.edit-photo, .delete-photo,
+.edit-timeline, .delete-timeline {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.edit-photo:hover, .delete-photo:hover,
+.edit-timeline:hover, .delete-timeline:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.save-edit, .cancel-edit,
+.save-timeline-edit, .cancel-timeline-edit {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-edit, .save-timeline-edit {
+    background: var(--primary-color);
+    color: white;
+}
+
+.cancel-edit, .cancel-timeline-edit {
+    background: #ccc;
+    color: white;
+}
+
+/* 日记编辑样式 */
+.diary-actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.diary-entry:hover .diary-actions {
+    opacity: 1;
+}
+
+.edit-diary-entry,
+.delete-diary-entry {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+.edit-diary-entry:hover,
+.delete-diary-entry:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.diary-edit-form {
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.edit-diary-title {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+}
+
+.edit-diary-content {
+    width: 100%;
+    min-height: 150px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    resize: vertical;
+}
+
+/* 编辑表单样式调整 */
+.timeline-edit-form {
+    margin-top: 1rem;
+    padding: 1.5rem;
+}
+
+.timeline-edit-form input,
+.timeline-edit-form textarea {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+}
+
+.timeline-edit-form textarea {
+    min-height: 120px;
+    resize: vertical;
+} 

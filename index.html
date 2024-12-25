@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="max-age=31536000, immutable">
+    <title>我们的温馨小家</title>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="music-player">
+        <audio id="bgMusic" loop>
+            <source src="assets/background-music.mp3" type="audio/mp3">
+        </audio>
+        <button id="musicToggle" title="播放/暂停背景音乐">
+            <i class="fas fa-music" aria-hidden="true"></i>
+            <span class="sr-only">播放/暂停背景音乐</span>
+        </button>
+    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">温馨首页</a></li>
+                <li><a href="#timeline">成长足迹</a></li>
+                <li><a href="#gallery">幸福瞬间</a></li>
+                <li><a href="#hobbies">我们的小天地</a></li>
+                <li><a href="#diary">妈妈的话</a></li>
+                <li><a href="#message">爱的留言</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="welcome-text">
+                <h1>欢迎来到妈妈和宝贝的幸福小窝</h1>
+                <p>记录每一个温暖瞬间，珍藏所有成长足迹</p>
+                <p class="subtitle">❤️ 爱你们的妈妈 ❤️</p>
+            </div>
+        </section>
+
+        <section id="timeline" class="timeline-section">
+            <h2>我们的时光轴</h2>
+            <!-- 添加里程碑表单 -->
+            <div class="add-milestone">
+                <button class="add-milestone-btn">
+                    <i class="fas fa-plus"></i>
+                    添加新里程碑
+                </button>
+                <div class="milestone-form" style="display: none;">
+                    <input type="text" id="milestoneDate" placeholder="日期（如：2024年春天）" required>
+                    <input type="text" id="milestoneTitle" placeholder="标题..." required>
+                    <textarea id="milestoneContent" placeholder="描述这个特别的时刻..." required></textarea>
+                    <div class="milestone-image-upload">
+                        <label for="milestoneImage" class="milestone-image-btn">
+                            <i class="fas fa-image"></i>
+                            添加照片
+                        </label>
+                        <input type="file" id="milestoneImage" accept="image/*" class="hidden-input">
+                    </div>
+                    <div class="milestone-preview-image"></div>
+                    <div class="milestone-form-buttons">
+                        <button type="button" class="cancel-milestone">取消</button>
+                        <button type="button" class="save-milestone">保存</button>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline">
+                <!-- 里程碑将通过JavaScript动态加载 -->
+            </div>
+        </section>
+
+        <section id="gallery" class="gallery-section">
+            <h2>温馨照片墙</h2>
+            <div class="upload-section">
+                <label for="photo-upload" class="upload-button">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    上传新照片
+                </label>
+                <input type="file" id="photo-upload" name="photos" accept="image/*" multiple class="hidden-input">
+            </div>
+            <div class="photo-grid">
+                <!-- 照片将通过JavaScript动态加载 -->
+            </div>
+        </section>
+
+        <section id="hobbies" class="hobbies-section">
+            <h2>我们的小天地</h2>
+            <div class="snake-game-container">
+                <div class="game-header">
+                    <h3>贪吃蛇小游戏</h3>
+                    <div class="score">得分: <span id="score">0</span></div>
+                </div>
+                <canvas id="snakeCanvas"></canvas>
+                <div class="game-controls">
+                    <button id="startGame">开始游戏</button>
+                    <div class="mobile-controls">
+                        <button id="upBtn">↑</button>
+                        <div class="horizontal-controls">
+                            <button id="leftBtn">←</button>
+                            <button id="rightBtn">→</button>
+                        </div>
+                        <button id="downBtn">↓</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="diary" class="diary-section">
+            <h2>成长日记</h2>
+            <!-- 添加日记表单 -->
+            <div class="add-diary">
+                <button class="add-diary-btn">
+                    <i class="fas fa-plus"></i>
+                    写新日记
+                </button>
+                <div class="diary-form" style="display: none;">
+                    <input type="text" id="diaryTitle" placeholder="标题..." required>
+                    <textarea id="diaryContent" placeholder="记录美好时刻..." required></textarea>
+                    <div class="diary-image-upload">
+                        <label for="diaryImages" class="diary-image-btn">
+                            <i class="fas fa-image"></i>
+                            添加照片
+                        </label>
+                        <input type="file" id="diaryImages" accept="image/*" multiple class="hidden-input">
+                    </div>
+                    <div class="diary-preview-images"></div>
+                    <div class="diary-form-buttons">
+                        <button type="button" class="cancel-diary">取消</button>
+                        <button type="button" class="save-diary">保存</button>
+                    </div>
+                </div>
+            </div>
+            <div class="diary-entries">
+                <!-- 日记条目将通过JavaScript动态加载 -->
+            </div>
+        </section>
+
+        <section id="message" class="message-section">
+            <h2>留言板</h2>
+            <div class="message-board">
+                <form id="message-form">
+                    <input type="text" 
+                           name="username" 
+                           placeholder="你的名字" 
+                           required 
+                           autocomplete="name">
+                    <textarea name="message" 
+                              placeholder="写下你想说的话..." 
+                              required 
+                              autocomplete="off"></textarea>
+                    <button type="submit">留言</button>
+                </form>
+                <div class="messages">
+                    <!-- 留言将通过JavaScript动态加载 -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 我们的温馨小家. 充满爱的小天地 ❤️</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
